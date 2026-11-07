@@ -1,0 +1,11 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+pydantic==2.12.5,<3.0.0
+psycopg2-binary==2.9.10
+python-dotenv==1.0.1
+httpx==0.28.1
+python-multipart==0.0.20
+chromadb==0.6.3
+pypdf==5.1.0
+sqlglot==26.16.4

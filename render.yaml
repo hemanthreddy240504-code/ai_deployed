@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: etidhi-pipeline-intelligence
+    runtime: python
+    plan: free
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: AI_PROVIDER
+        value: gemini
+      - key: CHROMA_PERSIST_DIR
+        value: /tmp/etidhi_chroma_db
+      - key: AI_CACHE_TTL
+        value: "300"
+      - key: AI_RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: AI_MAX_UPLOAD_MB
+        value: "8"
+      # Add GEMINI_API_KEY, ADMIN_EMAIL, ADMIN_PASSWORD, APP_BASE_URL and SMTP_* in Render dashboard.
